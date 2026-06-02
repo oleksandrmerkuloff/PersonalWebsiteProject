@@ -4,8 +4,7 @@ django-markdownx==4.0.7
 dotenv==0.9.9
 Markdown==3.7
 pillow==11.1.0
-psycopg==3.2.6
-psycopg2==2.9.10
+psycopg==3.3.4
 python-dotenv==1.1.0
 sqlparse==0.5.3
 typing_extensions==4.13.0
