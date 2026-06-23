@@ -1,90 +1,115 @@
-#container {
+.blog-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.blog-header {
+    margin-bottom: 2rem;
+}
+
+.blog-header h1 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.search-form {
     display: flex;
-    min-height: 80vh;
+    gap: 0.75rem;
 }
 
-.subhead {
-    font-weight: 500;
-    margin: 20px;
+.search-form input {
+    flex: 1;
+    padding: 0.9rem 1rem;
+    border: 1px solid #dcdcdc;
+    border-radius: 12px;
+    font-size: 1rem;
 }
 
-#blog-side {
-    width: 70%;
-    border-right: 1px solid black;
-    padding: 30px 0;
+.search-form button {
+    border: none;
+    padding: 0 1.25rem;
+    border-radius: 12px;
+    cursor: pointer;
+    background: #111827;
+    color: white;
 }
 
-#filters-side {
-    width: 30%;
-    padding-top: 30px;
+.active-filter {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f4f4f4;
+    border-radius: 12px;
 }
 
-#search-form {
-    width: 70%;
-    margin: 15px auto;
+.active-filter span {
+    font-weight: 600;
 }
 
-#search-form input {
-    height: 25px;
-    width: 85%;
+.active-filter a {
+    margin-left: 1rem;
 }
 
-#search-form button {
-    scale: 1.2;
+.posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
 }
 
-#tags-storage {
-    width: 90%;
-    margin: auto;
+.post-card {
+    padding: 1.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    transition: all 0.2s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.post-meta {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.post-title {
+    margin-bottom: 0.75rem;
+}
+
+.post-title a {
+    text-decoration: none;
+    color: #111827;
+}
+
+.post-title a:hover {
+    color: #2563eb;
+}
+
+.post-outline {
+    line-height: 1.6;
+    color: #374151;
+    margin-bottom: 1rem;
+}
+
+.post-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 0.5rem;
 }
 
-.tag-cell {
+.tag {
     text-decoration: none;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 3px;
-    color: #F5ECD5;
-    background-color: #941a43;
-    border-radius: 5px;
+    background: #eef2ff;
+    color: #4338ca;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    transition: 0.2s;
 }
 
-.tag-cell:hover {
-    color: #3f3e3b;
-    background-color: #dbd6d8;
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-    .tag-cell {
-        font-size: 12px;
-    }
-
-    #search-form input {
-        height: 20px;
-        width: 80%;
-    }
-    
-    #search-form button {
-        scale: 1;
-    }
-}
-
-@media (max-width: 480px) {
-    #container {
-        text-align: center;
-    }
-
-    #blog-side {
-        width: 100%;
-        border: none;
-        justify-content: center;
-        padding-top: 0;
-    }
-
-    #filters-side {
-        visibility: hidden;
-        max-width: 0;
-    }
+.tag:hover {
+    background: #4338ca;
+    color: white;
 }

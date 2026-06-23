@@ -1,33 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 
-from .models import Tag, Post
+from .models import Post
 
 
 def index(request):
-    recent_posts = Post.objects.all()[:4]
-    return render(request, 'home.html', {'posts': recent_posts})
+    return render(request, 'home.html')
 
 
-def blog_view(request, tag=None):
-    if tag:
-        posts = Post.objects.filter(tags__name=tag)
-    else:
-        posts = Post.objects.all()
-    if 'searching_title' in request.GET:
-        title = request.GET.get('searching_title')
-        posts = Post.objects.filter(title__icontains=title)
-    tags = Tag.objects.all()
-    return render(request, 'blog.html',
-                  {
-                    'tags': tags,
-                    'posts': posts
-                   }
-                  )
+def blog_view(request):
+    posts = Post.objects.prefetch_related("tags").all()
+    return render(request, "template_name", {"posts": posts}) # change template name
 
 
-def post_view(request, post_slug):
-    post = Post.objects.get(slug=post_slug)
-    return render(request, 'single-post.html', {'post': post})
+def post_view(request, slug):
+    queryset = Post.objects.prefetch_related("tags", "chapters")
+    post = get_object_or_404(queryset, slug=slug)
+    return render(request, 'template_name', {"post": post}) # change template name
 
 
 def contacts_view(request):

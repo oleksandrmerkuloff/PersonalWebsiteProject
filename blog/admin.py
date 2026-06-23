@@ -1,24 +1,24 @@
 from django.contrib import admin
-from django.db import models
-from markdownx.widgets import AdminMarkdownxWidget
+from adminsortable2.admin import SortableTabularInline, SortableAdminMixin
 
-from .models import Post, Tag
+from .models import Post, Tag, PostChapter
 
 
-class PostAdmin(admin.ModelAdmin):
-    formfield_overrides = {
-        models.TextField: {'widget': AdminMarkdownxWidget},
-    }
+class PostChapterInline(SortableTabularInline):
+    model = PostChapter
+    extra = 1
+    fields = ["subtitle", "content", "image"]
 
-    fields = ['title', 'outline', 'body', 'tags']
-    list_display = ['title', 'created_at']
-    list_display_links = ['title',]
-    list_filter = ['created_at',]
-    search_fields = ['title',]
 
-    class Meta:
-        js = ("markdownx/js/markdownx.js",)
-        css = {"all": ("markdownx/css/markdownx.css",)}
+class PostAdmin(SortableAdminMixin, admin.ModelAdmin):
+    fields = ["title", "outline", "tags"]
+    list_display = ["title", "created_at", "updated_at"]
+    list_display_links = ["title"]
+    list_filter = ["tags"]
+    list_per_page = 50
+    search_fields = ["title"]
+    sortable_by = ["created_at", "updated_at"]
+    inlines = [PostChapterInline]
 
 
 admin.site.register(Tag)

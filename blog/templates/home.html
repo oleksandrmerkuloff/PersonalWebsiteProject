@@ -20,17 +20,6 @@
     <p class="about-me-text">While studying cybersecurity at university, I formed a team and worked on several exciting projects. Initially, the team was envisioned as a game development studio, and we operated as ThunarGame Studio for nearly a year. Unfortunately, we had to close it when the coronavirus pandemic started. However, the team didn’t dissolve; we continued as a freelance group, mostly collaborating with other students to create diploma works and solutions for web development, bots, scripts, and cybersecurity projects. Our last major project was <b>Parkan</b>, and you can see the base code <a href="https://github.com/oleksandrmerkuloff/Parkan" target="_blank" id="repo-link">here</a>, though the project has now been discontinued.</p>
     <p class="about-me-text">Now, I’m dissolving my team and creating this website because I want to start fresh and share my journey with you. I don’t know if I’ll be successful, but I’m certain it will be interesting. I’d be pleased if my story can help someone on their own path and show that nothing is impossible!</p>
 
-    <h2 class="subhead">Recent posts</h2>
-
-    {% if posts %}
-        {% for post in posts %}
-            {% include 'includes/post-card.html' %}
-            <hr class="post-sep">
-        {% endfor %}
-    {% else %}
-        <h2 id="posts-stub">Sorry I don't have any post yet!</h1>
-    {% endif %}
-
 </div>
 
 {% endblock %}

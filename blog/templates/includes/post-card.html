@@ -1,9 +1,0 @@
-<div class="post-container">
-    <h3 class="post-title"><a href="{% url "post-view" post.slug %}" class="post-link">{{ post.title }}</a> <span class="post-date">{{ post.created_at|date:"d M Y" }}</span></h4>
-    <ul class="post-tags">
-        {% for tag in post.tags.all %}
-        <li class="single-tag">{{ tag }}</li>
-        {% endfor %}
-    </ul>
-    <p class="post-outline">{{ post.outline }}</p>
-</div>
