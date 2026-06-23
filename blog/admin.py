@@ -17,7 +17,7 @@ class PostAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_filter = ["tags"]
     list_per_page = 50
     search_fields = ["title"]
-    sortable_by = ["created_at", "updated_at"]
+    sortable_by = ["name", "created_at", "updated_at"]
     inlines = [PostChapterInline]
 
 
