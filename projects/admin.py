@@ -10,3 +10,6 @@ class ProjectAdmin(admin.ModelAdmin):
     list_per_page = 50
     search_fields = ["name"]
     sortable_by = ["name", "created_at", "updated_at"]    
+
+
+admin.site.register(Project, ProjectAdmin)

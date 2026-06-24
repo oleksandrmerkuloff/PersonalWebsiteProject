@@ -61,5 +61,3 @@ class PostChapter(models.Model):
         verbose_name = "Chapter"
         verbose_name_plural = "Chapters"
         ordering = ["position"]
-
-# I need connect django-admin-sortable2 to project for better chapter ordering

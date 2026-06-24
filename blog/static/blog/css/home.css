@@ -1,0 +1,13 @@
+/* --- Home Page Specific Styles --- */
+.home-intro-block {
+    max-width: 700px; 
+    margin-bottom: 5rem;
+}
+
+.home-intro-text {
+    display: flex; 
+    flex-direction: column; 
+    gap: 1.25rem; 
+    font-size: 1.1rem; 
+    color: #444;
+}

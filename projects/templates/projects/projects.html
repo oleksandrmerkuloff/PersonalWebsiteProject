@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Projects | Oleksandr Merkulov{% endblock title %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static "projects_list.css" %}">
+{% endblock %}
+
+{% block content %}
+<div class="projects-container">
+    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-family: var(--font-serif);">Projects</h1>
+    <p style="color: var(--text-muted); font-size: 1.1rem; font-family: var(--font-serif); margin-bottom: 2rem;">
+        A curated selection of things I've built, open-source work, and side experiments.
+    </p>
+
+    <div class="projects-grid">
+        {% for project in projects %}
+            <div class="project-card">
+                <div class="project-content">
+                    <h2>{{ project.name }}</h2>
+                    <p>{{ project.description }}</p>
+                </div>
+                
+                <div class="project-actions">
+                    {% if project.project_url %}
+                        <a href="{{ project.project_url }}" target="_blank" rel="noopener noreferrer" class="project-link">
+                            <span>View Project</span>
+                            <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+                        </a>
+                    {% else %}
+                        <span style="font-size: 0.85rem; color: var(--text-muted); font-style: italic;">Private Repository</span>
+                    {% endif %}
+                </div>
+            </div>
+        {% empty %}
+            <p style="color: var(--text-muted); font-style: italic; grid-column: 1 / -1;">No projects showcased just yet!</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

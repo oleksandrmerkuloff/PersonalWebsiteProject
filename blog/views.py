@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 
 from .models import Post
 
@@ -8,14 +8,18 @@ def index(request):
 
 
 def blog_view(request):
-    posts = Post.objects.prefetch_related("tags").all()
-    return render(request, "template_name", {"posts": posts}) # change template name
+    searching = request.GET.get("q")
+    if searching:
+        posts = Post.objects.prefetch_related("tags").filter(title__icontains=searching)
+    else:
+        posts = Post.objects.prefetch_related("tags").all()
+    return render(request, "blog.html", {"posts": posts}) # change template name
 
 
 def post_view(request, slug):
     queryset = Post.objects.prefetch_related("tags", "chapters")
     post = get_object_or_404(queryset, slug=slug)
-    return render(request, 'template_name', {"post": post}) # change template name
+    return render(request, 'single-post.html', {"post": post}) # change template name
 
 
 def contacts_view(request):

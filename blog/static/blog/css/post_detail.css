@@ -1,0 +1,118 @@
+/* --- Post Detail (Article) Styles --- */
+.article-container {
+    max-width: 720px; /* Golden width for reading long articles without eye strain */
+    margin: 0 auto;
+}
+
+.article-header {
+    margin-bottom: 3rem;
+}
+
+.article-title {
+    font-family: var(--font-serif);
+    font-size: 2.75rem;
+    line-height: 1.2;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+}
+
+.article-meta {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.article-meta .separator {
+    color: var(--border-color);
+}
+
+.article-outline {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    font-style: italic;
+    border-left: 3px solid var(--accent);
+    padding-left: 1.25rem;
+    margin: 2rem 0;
+}
+
+/* Chapters Stream Layout */
+.article-body {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem; /* Generous breathing room between chapters */
+}
+
+.chapter-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.chapter-title {
+    font-family: var(--font-serif);
+    font-size: 1.85rem;
+    color: var(--text-main);
+    margin-top: 1rem;
+}
+
+.chapter-text {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: var(--text-main);
+    white-space: pre-line;
+}
+
+/* Responsive Image Handling */
+.chapter-media {
+    margin: 1rem 0;
+    width: 100%;
+}
+
+.chapter-media img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+/* Simple Back Button Action Link */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.back-link svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    transition: transform 0.2s ease;
+}
+
+.back-link:hover svg {
+    transform: translateX(-3px);
+}
+
+@media (max-width: 768px) {
+    .article-title {
+        font-size: 2.1rem;
+    }
+}

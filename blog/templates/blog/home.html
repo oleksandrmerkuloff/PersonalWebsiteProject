@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock extra_css %}
+
+{% block title %}About Me | Oleksandr Merkulov{% endblock title %}
+
+{% block content %}
+<section class="home-intro-block" style="margin-bottom: 0;">
+    <h1 style="font-size: 2.5rem; margin-bottom: 1.5rem; font-family: var(--font-serif);">About Me</h1>
+    
+    <div class="home-intro-text">
+        <p>Hi, I'm Oleksandr, welcome to my website! Here I'm writing about my way as a developer and other themes like music, life, and of course about pets; especially about 🐕, love these little dudes!</p>
+        
+        <p>If you'd like to know a bit more about me, here's my short story: I'm from Kyiv, Ukraine. My interest in becoming a developer started back in middle school...</p>
+        
+        <p>Now, I'm creating this website because I want to start fresh and share my journey with you. I hope my story can help someone on their own path!</p>
+    </div>
+</section>
+{% endblock content %}

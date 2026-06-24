@@ -1,16 +1,16 @@
 from django.contrib import admin
-from adminsortable2.admin import SortableTabularInline, SortableAdminMixin
+from adminsortable2.admin import SortableAdminMixin
 
 from .models import Post, Tag, PostChapter
 
 
-class PostChapterInline(SortableTabularInline):
+class PostChapterInline(SortableAdminMixin, admin.TabularInline):
     model = PostChapter
     extra = 1
     fields = ["subtitle", "content", "image"]
 
 
-class PostAdmin(SortableAdminMixin, admin.ModelAdmin):
+class PostAdmin(admin.ModelAdmin):
     fields = ["title", "outline", "tags"]
     list_display = ["title", "created_at", "updated_at"]
     list_display_links = ["title"]

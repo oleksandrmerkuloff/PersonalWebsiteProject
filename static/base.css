@@ -1,88 +1,117 @@
+/* --- Design Tokens & Resets --- */
 :root {
-    --primary-background-color: #f1f0eb;
-    --primary-text-color: #6D2323;
-    --menu-hover-color: #A31D1D;
+    --bg-color: #f7f5f0;       /* Soft cream background, easier on eyes than pure white */
+    --text-main: #2b2a27;      /* Deep off-black for premium text readability */
+    --text-muted: #706e68;     /* Subtle gray for dates and metadata */
+    --accent: #a34823;         /* Warm rust/terracotta accent for links and titles */
+    --accent-hover: #cf5b2d;
+    --border-color: #e3dec3;   /* Soft border line color */
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-serif: "Georgia", Cambria, "Times New Roman", Times, serif; /* Better for long articles */
+    --max-width: 900px;
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    font-family: "Inter", sans-serif;
-    font-style: normal;
     box-sizing: border-box;
-    background-color: var(--primary-background-color);
-    color: var(--primary-text-color);
-    /* background-color: #f1f0eb; */
-    /* color: #6D2323; */
+    margin: 0;
+    padding: 0;
 }
 
-#web-head {
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    padding: 0 1.5rem;
+}
+
+/* --- Base Layout --- */
+.site-wrapper {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
     display: flex;
     justify-content: space-between;
-    width: 90%;
-    height: 20%;
-    margin: auto;
-    padding: 30px;
+    align-items: center;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border-color);
 }
 
-#hname {
-    width: max-content;
-    font-weight: 500;
-}
-
-#menu-list {
-    display: flex;
-    justify-self: flex-end;
-    list-style: none;
-    margin-right: 2vw;
-}
-
-.menu-item {
-    margin: auto 1vh;
-}
-
-.menu-link {
+.logo a {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
     text-decoration: none;
-    color: var(--primary-text-color);
-    font-size: 2.8vh;
-    font-weight: 600;
+    letter-spacing: -0.02em;
 }
 
-.menu-link:hover {
-    color: var(--menu-hover-color);
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+nav a:hover, nav a.active {
+    color: var(--accent);
+}
+
+main {
+    flex: 1;
+    padding: 3.5rem 0;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+}
+
+/* --- Shared Typography UI Elements --- */
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
     text-decoration: underline;
 }
 
-#web-foot {
-    margin-top: 40px;
-    margin-bottom: 16px;
-    width: 100%;
-    text-align: center;
+h1, h2, h3 {
+    letter-spacing: -0.01em;
 }
 
-#copyright {
-    color: rgb(31 41 55);
-    opacity: 0.7;
+/* Tag Badges */
+.tags-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.25rem;
 }
 
-#posts-stub {
-    text-align: center;
+.tag-badge {
+    font-size: 0.75rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
 }
 
-@media (max-width: 480px) {
-    #web-head {
+@media (max-width: 768px) {
+    header {
         flex-direction: column;
+        gap: 1rem;
     }
-
-    #hname {
-        margin: auto;
-    }
-    
-    #menu-list {
-        margin: 2vh auto 0 auto;
-    }
-
-    .menu-link {
-        font-size: 1.5em;
+    nav a {
+        margin: 0 0.75rem;
     }
 }

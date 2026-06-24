@@ -1,0 +1,98 @@
+/* --- Blog Component Stream Styles --- */
+.blog-layout {
+    max-width: 700px; /* Aligns perfectly with home and article detail widths */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+/* Search Bar Formatting */
+.search-form input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    color: var(--text-main);
+    transition: border-color 0.2s ease;
+}
+
+.search-form input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* Active Context Filter Banner */
+.filter-status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.btn-clear-filter {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Posts Feed Stream */
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+}
+
+.post-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.post-card .meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.post-card h2 a {
+    color: var(--text-main);
+    font-size: 1.85rem;
+    font-family: var(--font-serif);
+}
+
+.post-card h2 a:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.post-card p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+/* Tag Links inside Cards */
+.tag-link {
+    font-size: 0.75rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.tag-link:hover {
+    text-decoration: none;
+    border-color: var(--accent);
+    color: var(--accent);
+    background-color: #fff;
+}
