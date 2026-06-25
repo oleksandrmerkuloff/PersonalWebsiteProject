@@ -20,12 +20,12 @@
     {% if current_tag or search_query %}
         <div class="filter-status-bar">
             <div>
-                <span style="color: var(--text-muted);">Showing entries for:</span>
-                {% if current_tag %}<strong style="color: var(--accent);">#{{ current_tag }}</strong>{% endif %}
-                {% if current_tag and search_query %}<span style="color: var(--border-color);"> & </span>{% endif %}
-                {% if search_query %}<span>search "{{ search_query }}"</span>{% endif %}
+                <span>Showing: </span>
+                {% if current_tag %}<strong style="color: var(--text-main); font-weight: 600;">#{{ current_tag }}</strong>{% endif %}
+                {% if current_tag and search_query %}<span style="color: var(--border-color);"> + </span>{% endif %}
+                {% if search_query %}<span style="font-style: italic;">"{{ search_query }}"</span>{% endif %}
             </div>
-            <a href="{% url 'post-list' %}" class="btn-clear-filter">All Posts &times;</a>
+            <a href="{% url 'post-list' %}" class="btn-clear-filter">clear filters &times;</a>
         </div>
     {% endif %}
 
@@ -52,7 +52,6 @@
         {% empty %}
             <div style="text-align: center; padding: 3rem 0; color: var(--text-muted);">
                 <p style="font-style: italic; margin-bottom: 1rem;">No posts matched your current filter criteria.</p>
-                <a href="{% url 'post-list' %}" class="tag-badge" style="display: inline-block; text-decoration: none;">Reset Filters</a>
             </div>
         {% endfor %}
     </main>
