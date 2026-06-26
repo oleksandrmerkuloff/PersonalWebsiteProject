@@ -1,45 +1,68 @@
-# Personal Website Project
+# Personal Portfolio & Blog Website
 
-Welcome to the **Personal website** project! This repository contains the source code for personal website.
-And every user can to take this code and learn django using it.
+A clean, minimalist personal website, portfolio, and modular blog application built from scratch using **Django** and **PostgreSQL**. The project features an elegant, single-column reading flow, an interactive tag-filtering/search engine, and a flexible chapter-based content system designed for high backend customizability.
 
-## Overview
+## 📸 Screenshots
 
-This project serves as my personal website, showcasing my portfolio, blog, and contact information. It is designed to provide visitors with insights into my work, interests, and ways to connect with me.
-But anyone can take this code for learning django features.
+| Home Page / About | Blog Feed (Filtered) | Project Matrix |
+|---|---|---|
+| ![Home Page](./readme_imgs/home.jpg) | ![Blog Feed](./readme_imgs/blog.jpg) | ![Projects](./readme_imgs/projects.jpg) |
 
-## Website includes
+*(Place your images inside a `./docs/screenshots/` directory or update paths accordingly)*
 
-- **Home page**: Includes short info about me and last five posts.
-- **Blog**: Separate on two sections first and main includes list of posts, second includes search and tag filters.
-- **Contact Form**: Allows visitors to contact with me through website.
-- **Responsive Design**: Yes, website include it but design isn't great.
+---
 
-## Technologies Used
+## ✨ Features
 
-- **Backend**: [Django](https://www.djangoproject.com/) - A high-level Python web framework.
-- **Frontend**: HTML5, CSS3.
-- **Database**: PostgreSQL but you can recreat SQLite database.
-- **Version Control**: [Git](https://git-scm.com/) and [GitHub](https://github.com/).
+* **Minimalist Architecture:** Translucent design tokens, optimized serif-based typography hierarchies for readability, and native responsive layouts.
+* **Modular Chapter-Based Engine:** Content isn't confined to a single massive textarea. Articles are split into sequential, reorderable `PostChapter` nodes supporting dynamic subtitle, text, and media uploads.
+* **Smart URL State Management:** Contextual backend search and tag-filtering execution using compound query strings (`?tag=python&q=query`).
+* **Persistent Filter Navigation:** Typographic header tracking displaying active filter constraints with a one-click default reset capability.
+* **Projects Grid Dashboard:** Minimal, hover-interactive portfolio component to display professional developments, repositories, and case studies.
 
-### To set up this project locally on your machine, follow these steps
+---
 
-1. **Clone the Repository**: `git clone https://github.com/oleksandrmerkuloff/my-web.git`
-2. **Don't forget about python**: https://www.python.org/
-3. **Install all tools what you need**: using requirements.txt install all frames and libs `pip install -r /path/to/requirements.txt`
+## 🛠️ Tech Stack & Utilities
 
-#### After all you can use this website for learning django or maybe create yor own website.
+* **Framework:** Django (Python 3.13+)
+* **Database:** PostgreSQL
+* **Package & Environment Management:** [uv](https://github.com/astral-sh/uv) (Fast Python package installer and resolver)
+* **Ordering Mixins:** `django-adminsortable2` (For managing chapter sequence arrays)
 
-At the end I posted several images from website:
+---
 
-## Home page
+## 🚀 Local Development Setup
 
-![home image](readme_imgs/home.png)
+### 1. Prerequisites
+Ensure you have `uv` installed on your machine:
+```bash
+# On macOS/Linux
+curl -LsSf [https://astral-sh.uv.run/install.sh](https://astral-sh.uv.run/install.sh) | sh
 
-## Blog page
+### 2. Clone the Repository
+git clone [https://github.com/oleksandrmerkuloff/PersonalWebsiteProject.git](https://github.com/oleksandrmerkuloff/PersonalWebsiteProject.git)
+cd PersonalWebsiteProject
 
-![home image](readme_imgs/blog.png)
+### 3. Setup Your Environment Variables
+Create a .env file in the project root folder to map your local PostgreSQL database credentials securely:
+DEBUG=True
+SECRET_KEY=your-dev-secret-key
+DB_NAME=your_db_name
+DB_USER=your_db_user
+DB_PASSWORD=your_db_password
+DB_HOST=localhost
+DB_PORT=5432
 
-## Contacts page
+### 4. Install Dependencies & Synchronize Database
+Use uv to automatically provision a virtual environment, compile your environment tracking files, generate schemas, and run migrations:
 
-![home image](readme_imgs/contacts.png)
+# Generate and apply schemas
+uv run python manage.py makemigrations
+uv run python manage.py migrate
+
+# Create your admin user profile dashboard access
+uv run python manage.py createsuperuser
+
+### 5. Run the Local Development Server
+uv run python manage.py runserver
+Navigate to http://127.0.0.1:8000/ in your browser to inspect your local node stream!
