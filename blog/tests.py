@@ -7,10 +7,6 @@ from .models import Post, Tag
 class BlogEngineTests(TestCase):
 
     def setUp(self):
-        """
-        Arrange: This runs before EVERY single test method.
-        We use it to populate our temporary database with mock data.
-        """
         # Create some tags
         self.python_tag = Tag.objects.create(name="python")
         self.life_tag = Tag.objects.create(name="life")
