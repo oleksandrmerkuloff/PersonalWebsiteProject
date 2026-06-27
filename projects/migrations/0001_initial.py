@@ -5,28 +5,45 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Project',
+            name="Project",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=100)),
-                ('desctiption', models.TextField(blank=True, null=True)),
-                ('status', models.CharField(choices=[('P', 'Planning'), ('I', 'In progress'), ('D', 'Done')], default='P', max_length=1)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('project_url', models.URLField(blank=True, null=True)),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("desctiption", models.TextField(blank=True, null=True)),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("P", "Planning"),
+                            ("I", "In progress"),
+                            ("D", "Done"),
+                        ],
+                        default="P",
+                        max_length=1,
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("project_url", models.URLField(blank=True, null=True)),
             ],
             options={
-                'verbose_name': 'Project',
-                'verbose_name_plural': 'Projects',
-                'ordering': ['-created_at'],
+                "verbose_name": "Project",
+                "verbose_name_plural": "Projects",
+                "ordering": ["-created_at"],
             },
         ),
     ]

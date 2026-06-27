@@ -5,7 +5,6 @@ from .models import Post, Tag
 
 
 class BlogEngineTests(TestCase):
-
     def setUp(self):
         # Create some tags
         self.python_tag = Tag.objects.create(name="python")
@@ -15,7 +14,7 @@ class BlogEngineTests(TestCase):
         self.post_one = Post.objects.create(
             title="Learning Django Backend Architecture",
             outline="A deep dive into writing clean backend code.",
-            slug="learning-django-backend"
+            slug="learning-django-backend",
         )
         self.post_one.tags.add(self.python_tag)
 
@@ -23,7 +22,7 @@ class BlogEngineTests(TestCase):
         self.post_two = Post.objects.create(
             title="My Journey and Moving to Kyiv",
             outline="Reflecting on life, music, and software.",
-            slug="my-journey-kyiv"
+            slug="my-journey-kyiv",
         )
         self.post_two.tags.add(self.life_tag)
 
@@ -51,7 +50,7 @@ class BlogEngineTests(TestCase):
         """Act & Assert: Test that passing a ?tag= query string successfully restricts results."""
         # Request only posts tagged with 'python'
         response = self.client.get(self.blog_url, {"tag": "python"})
-        
+
         self.assertEqual(response.status_code, 200)
         # Python post should be here
         self.assertContains(response, self.post_one.title)
@@ -62,7 +61,7 @@ class BlogEngineTests(TestCase):
         """Act & Assert: Test that passing a ?q= query string filters by title context."""
         # Search for the keyword "Kyiv"
         response = self.client.get(self.blog_url, {"q": "Kyiv"})
-        
+
         self.assertEqual(response.status_code, 200)
         # Kyiv post should match
         self.assertContains(response, self.post_two.title)
@@ -73,7 +72,7 @@ class BlogEngineTests(TestCase):
         """Act & Assert: Test that an empty response correctly renders our empty message state."""
         # Search for something that doesn't exist
         response = self.client.get(self.blog_url, {"q": "nonexistent_keyword"})
-        
+
         self.assertEqual(response.status_code, 200)
         # HTML template text fallback string should show up
         self.assertContains(response, "No posts matched your current filter criteria.")

@@ -6,62 +6,98 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('title', models.CharField(max_length=150)),
-                ('outline', models.CharField(blank=True, default='', max_length=255)),
-                ('slug', models.SlugField(blank=True, max_length=250, unique=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("title", models.CharField(max_length=150)),
+                ("outline", models.CharField(blank=True, default="", max_length=255)),
+                ("slug", models.SlugField(blank=True, max_length=250, unique=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
             ],
             options={
-                'verbose_name': 'Post',
-                'verbose_name_plural': 'Posts',
-                'ordering': ['-created_at'],
+                "verbose_name": "Post",
+                "verbose_name_plural": "Posts",
+                "ordering": ["-created_at"],
             },
         ),
         migrations.CreateModel(
-            name='Tag',
+            name="Tag",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50, unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50, unique=True)),
             ],
             options={
-                'verbose_name': 'Tag',
-                'verbose_name_plural': 'Tags',
-                'ordering': ['name'],
+                "verbose_name": "Tag",
+                "verbose_name_plural": "Tags",
+                "ordering": ["name"],
             },
         ),
         migrations.CreateModel(
-            name='PostChapter',
+            name="PostChapter",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('subtitle', models.CharField(blank=True, default='', max_length=150)),
-                ('content', models.TextField(blank=True, default='')),
-                ('image', models.ImageField(blank=True, null=True, upload_to='blog_chapters/')),
-                ('position', models.PositiveIntegerField(db_index=True, default=0)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='chapters', to='blog.post')),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("subtitle", models.CharField(blank=True, default="", max_length=150)),
+                ("content", models.TextField(blank=True, default="")),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="blog_chapters/"
+                    ),
+                ),
+                ("position", models.PositiveIntegerField(db_index=True, default=0)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "post",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="chapters",
+                        to="blog.post",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Chapter',
-                'verbose_name_plural': 'Chapters',
-                'ordering': ['position'],
+                "verbose_name": "Chapter",
+                "verbose_name_plural": "Chapters",
+                "ordering": ["position"],
             },
         ),
         migrations.AddField(
-            model_name='post',
-            name='tags',
-            field=models.ManyToManyField(blank=True, related_name='posts', to='blog.tag'),
+            model_name="post",
+            name="tags",
+            field=models.ManyToManyField(
+                blank=True, related_name="posts", to="blog.tag"
+            ),
         ),
     ]

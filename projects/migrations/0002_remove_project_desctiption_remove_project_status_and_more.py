@@ -4,33 +4,32 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('projects', '0001_initial'),
+        ("projects", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='project',
-            name='desctiption',
+            model_name="project",
+            name="desctiption",
         ),
         migrations.RemoveField(
-            model_name='project',
-            name='status',
+            model_name="project",
+            name="status",
         ),
         migrations.AddField(
-            model_name='project',
-            name='description',
-            field=models.CharField(blank=True, default='', max_length=255),
+            model_name="project",
+            name="description",
+            field=models.CharField(blank=True, default="", max_length=255),
         ),
         migrations.AlterField(
-            model_name='project',
-            name='name',
+            model_name="project",
+            name="name",
             field=models.CharField(max_length=150),
         ),
         migrations.AlterField(
-            model_name='project',
-            name='project_url',
-            field=models.URLField(blank=True, default=''),
+            model_name="project",
+            name="project_url",
+            field=models.URLField(blank=True, default=""),
         ),
     ]
